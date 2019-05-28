@@ -18,7 +18,7 @@ class m190527_215238_create_user_table extends Migration
             'password' => $this->string(),
             'first_last_name' => $this->string(),
             'birthday' => $this->date(),
-            'avatar' => $this->date(),
+            'avatar' => $this->string(),
             'role' => $this->string(),
         ]);
     }
