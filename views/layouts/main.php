@@ -4,11 +4,9 @@
 
 /* @var $content string */
 
-use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
-use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
@@ -30,13 +28,33 @@ AppAsset::register($this);
 <div class="wrap">
 
     <?php
-    NavBar::begin(['brandLabel' => 'Lea']);
-    echo Nav::widget([
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
+    NavBar::begin(['brandLabel' => 'Lea', 'options' => [
+        'class' => ['navbar-dark bg-dark', 'navbar-expand-md']
+    ]]);
+    $items = [
+        [
+            'label' => 'Главная',
+            'url' => '/',
         ],
-        'options' => ['class' => 'navbar-nav dark'],
+    ];
+    if (Yii::$app->user->isGuest) {
+        $items[] = [
+            'label' => 'Вход',
+            'url' => '/auth/signin',
+        ];
+        $items[] = [
+            'label' => 'Регистрация',
+            'url' => '/auth/signup',
+        ];
+    }else {
+        $items[] = [
+            'label' => 'Выход',
+            'url' => '/auth/logout',
+        ];
+    }
+    echo Nav::widget([
+        'items' => $items,
+        'options' => ['class' => 'navbar-nav ml-auto'],
     ]);
     NavBar::end(); ?>
     <div class="container">
