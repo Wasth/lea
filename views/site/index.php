@@ -1,5 +1,5 @@
 <?php
-
+$this->title = 'Lea - изучение английского';
 use yii\bootstrap4\Alert;
 use yii\helpers\Url;
 
@@ -19,8 +19,8 @@ use yii\helpers\Url;
 
     <p class="lead">
         <?php if (Yii::$app->user->isGuest): ?>
-            <a class="btn btn-primary btn-lg" href="<?= Url::to(['auth/signup']) ?>" role="button">Создать аккаунт</a>
-            <a class="btn btn-primary btn-lg" href="<?= Url::to(['auth/signin']) ?>" role="button">Войти в аккаунт</a>
+            <a class="btn btn-primary btn-lg mt-2" href="<?= Url::to(['auth/signup']) ?>" role="button">Создать аккаунт</a>
+            <a class="btn btn-primary btn-lg mt-2" href="<?= Url::to(['auth/signin']) ?>" role="button">Войти в аккаунт</a>
         <?php else: ?>
             <a class="btn btn-primary btn-lg" href="" role="button">Пройти тест</a>
         <?php endif; ?>

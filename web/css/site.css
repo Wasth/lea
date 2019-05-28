@@ -11,7 +11,7 @@ body {
 }
 
 .wrap > .container {
-    padding: 70px 15px 20px;
+    padding: 20px 15px 20px;
 }
 
 .footer {
@@ -112,4 +112,25 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+.avatar {
+    overflow: hidden;
+    position: relative;
+    padding-top: 100%;
+    background-size: cover;
+    background-position: center center;
+}
+.avatar:before {
+    content: '';
+    display: block;
+    width: 100%;
+}
+.avatar > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.profile-edit input[type=file] {
+    height: 38px;
 }

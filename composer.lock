@@ -1,11 +1,27 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "538be81849c0634c0961f9e649376175",
+    "content-hash": "24e4445abfbc96acbf969d8aa181d9c9",
     "packages": [
+        {
+            "name": "bower-asset/animate.css",
+            "version": "3.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/daneden/animate.css.git",
+                "reference": "940e4aef81edc26d3458480adcd475e51bd38df5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/daneden/animate.css/zipball/940e4aef81edc26d3458480adcd475e51bd38df5",
+                "reference": "940e4aef81edc26d3458480adcd475e51bd38df5",
+                "shasum": null
+            },
+            "type": "bower-asset"
+        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.4.1",
@@ -70,6 +86,25 @@
             ]
         },
         {
+            "name": "bower-asset/moment",
+            "version": "2.24.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moment/moment.git",
+                "reference": "96d0d6791ab495859d09a868803d31a55c917de1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moment/moment/zipball/96d0d6791ab495859d09a868803d31a55c917de1",
+                "reference": "96d0d6791ab495859d09a868803d31a55c917de1",
+                "shasum": null
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
             "name": "bower-asset/punycode",
             "version": "v1.3.2",
             "source": {
@@ -81,6 +116,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/bestiejs/punycode.js/zipball/38c8d3131a82567bfef18da09f7f4db68c84f8a3",
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3",
+                "shasum": null
+            },
+            "type": "bower-asset"
+        },
+        {
+            "name": "bower-asset/tempusdominus-bootstrap-4",
+            "version": "5.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tempusdominus/bootstrap-4.git",
+                "reference": "540bfae18ca662bacfbea610e0ab8dcce6dd699e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tempusdominus/bootstrap-4/zipball/540bfae18ca662bacfbea610e0ab8dcce6dd699e",
+                "reference": "540bfae18ca662bacfbea610e0ab8dcce6dd699e",
                 "shasum": null
             },
             "type": "bower-asset"
@@ -344,6 +395,100 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "simialbi/yii2-simialbi-base",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simialbi/yii2-simialbi-base.git",
+                "reference": "aaca48daed7a76e0454a17df5c995ba9b60e5da8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simialbi/yii2-simialbi-base/zipball/aaca48daed7a76e0454a17df5c995ba9b60e5da8",
+                "reference": "aaca48daed7a76e0454a17df5c995ba9b60e5da8",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/animate.css": "~3.5",
+                "bower-asset/moment": "~2.22",
+                "yiisoft/yii2": "~2.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "simialbi\\yii2\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simon Karlen",
+                    "email": "simi.albi@gmail.com"
+                }
+            ],
+            "description": "yii2 simialbi base",
+            "keywords": [
+                "base",
+                "extension",
+                "foundation",
+                "simialbi",
+                "widget",
+                "yii2"
+            ],
+            "time": "2018-10-10T07:38:53+00:00"
+        },
+        {
+            "name": "simialbi/yii2-widget-datetimepicker",
+            "version": "2.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simialbi/yii2-widget-datetimepicker.git",
+                "reference": "85e1d3a0b9e3deea84f333d448eac0a93c97111d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simialbi/yii2-widget-datetimepicker/zipball/85e1d3a0b9e3deea84f333d448eac0a93c97111d",
+                "reference": "85e1d3a0b9e3deea84f333d448eac0a93c97111d",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/tempusdominus-bootstrap-4": "~5.0",
+                "simialbi/yii2-simialbi-base": "*",
+                "yiisoft/yii2": "~2.0",
+                "yiisoft/yii2-bootstrap4": "~1.0@dev"
+            },
+            "require-dev": {
+                "yiisoft/yii2-coding-standards": "~2.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "simialbi\\yii2\\date\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simon Karlen",
+                    "email": "simi.albi@gmail.com"
+                }
+            ],
+            "description": "yii2 widget based on tempus dominus",
+            "keywords": [
+                "DateTimePicker",
+                "datepicker",
+                "yii2",
+                "yii2-widgets"
+            ],
+            "time": "2018-10-25T14:42:37+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -648,12 +793,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "4bd45e29e666b6bb41750d971e99e761cb4c2445"
+                "reference": "cc890c07a0bc4c2eb981b81570286d6cb4887abd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/4bd45e29e666b6bb41750d971e99e761cb4c2445",
-                "reference": "4bd45e29e666b6bb41750d971e99e761cb4c2445",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/cc890c07a0bc4c2eb981b81570286d6cb4887abd",
+                "reference": "cc890c07a0bc4c2eb981b81570286d6cb4887abd",
                 "shasum": ""
             },
             "require": {
@@ -740,7 +885,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2019-05-23T15:52:18+00:00"
+            "time": "2019-05-28T07:03:39+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -811,12 +956,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-bootstrap4.git",
-                "reference": "b30c85cb45f17807f228f8979177c5c059486b47"
+                "reference": "0611c3a8d7ec377441211806d4bcab002a2f9a37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap4/zipball/b30c85cb45f17807f228f8979177c5c059486b47",
-                "reference": "b30c85cb45f17807f228f8979177c5c059486b47",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap4/zipball/0611c3a8d7ec377441211806d4bcab002a2f9a37",
+                "reference": "0611c3a8d7ec377441211806d4bcab002a2f9a37",
                 "shasum": ""
             },
             "require": {
@@ -872,7 +1017,7 @@
                 "bootstrap4",
                 "yii2"
             ],
-            "time": "2019-05-23T15:57:32+00:00"
+            "time": "2019-05-28T06:13:55+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -880,12 +1025,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-composer.git",
-                "reference": "b03ec77d34509a5adb70694c7048396dc48457c1"
+                "reference": "fa0856bb95beb49d30f408639224b0e0ed26b4f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/b03ec77d34509a5adb70694c7048396dc48457c1",
-                "reference": "b03ec77d34509a5adb70694c7048396dc48457c1",
+                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/fa0856bb95beb49d30f408639224b0e0ed26b4f3",
+                "reference": "fa0856bb95beb49d30f408639224b0e0ed26b4f3",
                 "shasum": ""
             },
             "require": {
@@ -927,7 +1072,7 @@
                 "extension installer",
                 "yii2"
             ],
-            "time": "2019-05-23T16:26:33+00:00"
+            "time": "2019-05-28T08:14:44+00:00"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
@@ -3118,12 +3263,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "2fae7f5c8e390292c3f59e92d83e8a58b9850725"
+                "reference": "68fb0ab720a605f8185b338d04c097cf36ccc223"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/2fae7f5c8e390292c3f59e92d83e8a58b9850725",
-                "reference": "2fae7f5c8e390292c3f59e92d83e8a58b9850725",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/68fb0ab720a605f8185b338d04c097cf36ccc223",
+                "reference": "68fb0ab720a605f8185b338d04c097cf36ccc223",
                 "shasum": ""
             },
             "require": {
@@ -3143,6 +3288,7 @@
                 "symfony/dependency-injection": "~3.4|~4.0",
                 "symfony/expression-language": "~3.4|~4.0",
                 "symfony/http-foundation": "^3.4|^4.0",
+                "symfony/service-contracts": "^1.1",
                 "symfony/stopwatch": "~3.4|~4.0"
             },
             "suggest": {
@@ -3179,7 +3325,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2019-05-27T10:42:03+00:00"
+            "time": "2019-05-28T07:51:04+00:00"
         },
         {
             "name": "symfony/event-dispatcher-contracts",
@@ -3410,12 +3556,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "10bac770ccd21b38cc15d69c3eab3b94542153a0"
+                "reference": "191afdcb5804db960d26d8566b7e9a2843cab3a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/10bac770ccd21b38cc15d69c3eab3b94542153a0",
-                "reference": "10bac770ccd21b38cc15d69c3eab3b94542153a0",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/191afdcb5804db960d26d8566b7e9a2843cab3a0",
+                "reference": "191afdcb5804db960d26d8566b7e9a2843cab3a0",
                 "shasum": ""
             },
             "require": {
@@ -3460,7 +3606,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2019-05-27T10:52:29+00:00"
+            "time": "2019-05-28T07:50:59+00:00"
         },
         {
             "name": "symfony/yaml",

@@ -20,4 +20,20 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+
+    public function actionProfile(){
+        if(Yii::$app->user->isGuest) {
+            return $this->redirect('/');
+        }
+
+        $model = Yii::$app->user->identity;
+
+        if($model->load(Yii::$app->request->post())) {
+            $model->updateData();
+        }
+
+        return $this->render('profile', [
+            'model' => $model
+        ]);
+    }
 }

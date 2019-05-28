@@ -34,22 +34,26 @@ AppAsset::register($this);
     $items = [
         [
             'label' => 'Главная',
-            'url' => '/',
+            'url' => ['/site/index'],
         ],
     ];
     if (Yii::$app->user->isGuest) {
         $items[] = [
             'label' => 'Вход',
-            'url' => '/auth/signin',
+            'url' => ['/auth/signin'],
         ];
         $items[] = [
             'label' => 'Регистрация',
-            'url' => '/auth/signup',
+            'url' => ['/auth/signup'],
         ];
     }else {
         $items[] = [
+            'label' => 'Мой профиль',
+            'url' => ['/site/profile'],
+        ];
+        $items[] = [
             'label' => 'Выход',
-            'url' => '/auth/logout',
+            'url' => ['/auth/logout'],
         ];
     }
     echo Nav::widget([

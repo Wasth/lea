@@ -5,6 +5,7 @@ namespace app\models;
 use PHPUnit\Util\PHP\AbstractPhpProcess;
 use Yii;
 use yii\web\IdentityInterface;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "user".
@@ -16,9 +17,13 @@ use yii\web\IdentityInterface;
  * @property string $birthday
  * @property string $avatar
  * @property string $role
+ * @property string $avatarUrl
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
+    public $newpassword;
+    public $avatarfile;
+
     /**
      * {@inheritdoc}
      */
@@ -33,8 +38,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['birthday', 'avatar'], 'safe'],
-            [['login', 'password', 'first_last_name', 'role'], 'string', 'max' => 255],
+            [['birthday'], 'safe'],
+            [['login', 'avatar', 'password', 'first_last_name', 'role'], 'string', 'max' => 255],
             [['login'], 'unique', 'on' => 'default'],
             [['login'], 'unique', 'on' => 'signup'],
             ['role', 'default', 'value' => 'user'],
@@ -42,6 +47,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['login', 'password', 'first_last_name'], 'required', 'on' => 'signup'],
             [['first_last_name'], 'validateFirstLastNames', 'on' => 'signup'],
             [['login', 'password'], 'required', 'on' => 'signin'],
+            [['newpassword'], 'string'],
+            [['avatarfile'], 'file', 'extensions' => ['jpg', 'png', 'jpeg']],
         ];
     }
 
@@ -94,6 +101,33 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return false;
     }
 
+    public function updateData()
+    {
+        if ($this->newpassword) {
+            $this->password = md5($this->newpassword);
+        }
+        $file = UploadedFile::getInstance($this, 'avatarfile');
+        if ($file) {
+
+            $filename = uniqid() . '.' . $file->extension;
+            $file->saveAs('avatars/'.$filename);
+            $this->avatar = $filename;
+        }
+
+        $this->scenario = 'signup';
+        if ($this->validate()) {
+            Yii::$app->session->setFlash('success', 'Вы успешно изменили данные');
+        }
+        return $this->save();
+    }
+
+    public function getAvatarUrl(){
+
+        if($this->avatar) {
+            return '/avatars/'.$this->avatar;
+        }
+        return null;
+    }
 
     public static function findIdentity($id)
     {
