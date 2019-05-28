@@ -29,7 +29,7 @@ AppAsset::register($this);
 
     <?php
     NavBar::begin(['brandLabel' => 'Lea', 'options' => [
-        'class' => ['navbar-dark bg-dark', 'navbar-expand-md']
+        'class' => ['navbar-dark bg-info', 'navbar-expand-md']
     ]]);
     $items = [
         [
