@@ -27,11 +27,12 @@ class SiteController extends Controller
         }
 
         $model = Yii::$app->user->identity;
-
         if($model->load(Yii::$app->request->post())) {
             $model->updateData();
+
         }
 
+//        $model->reformatDate();
         return $this->render('profile', [
             'model' => $model
         ]);

@@ -17,8 +17,10 @@ $this->title = 'Lea - Мой профиль';
         <div class="col-sx-12 col-md-3 text-center">
             <?php if (!$model->avatar): ?>
                 <h5>Ваш аватар</h5>
+                <span class="not-set">(не задано)</span>
+            <?php else: ?>
+                <div class="w-100 rounded-circle avatar" style="background-image: url('<?= $model->avatarUrl ?>');"><div></div></div>
             <?php endif; ?>
-            <div class="w-100 rounded-circle avatar" style="background-image: url('<?= $model->avatarUrl ?>');"><div></div></div>
         </div>
         <div class="col-sx-12 col-md-9">
             <h2><?= $model->first_last_name ?></h2>

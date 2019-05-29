@@ -101,16 +101,32 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return false;
     }
 
+    public function reformatDate()
+    {
+        if($this->birthday){
+            $datepicker_regex = '/(\d{2})\.(\d{2})\.(\d{1,4})/m';
+            $dbdate_regex = '/(\d{1,4})-(\d{2})-(\d{2})/m';
+            if(preg_match($datepicker_regex, $this->birthday)) {
+                $this->birthday = preg_replace($datepicker_regex, '$3-$2-$1', $this->birthday);
+            }else if(preg_match($dbdate_regex, $this->birthday)){
+                $this->birthday = preg_replace($dbdate_regex, '$3.$2.$1', $this->birthday);
+            }
+        }else {
+            $this->birthday = null;
+        }
+    }
+
     public function updateData()
     {
+        $this->reformatDate();
         if ($this->newpassword) {
             $this->password = md5($this->newpassword);
         }
+
         $file = UploadedFile::getInstance($this, 'avatarfile');
         if ($file) {
-
             $filename = uniqid() . '.' . $file->extension;
-            $file->saveAs('avatars/'.$filename);
+            $file->saveAs('avatars/' . $filename);
             $this->avatar = $filename;
         }
 
@@ -118,13 +134,13 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         if ($this->validate()) {
             Yii::$app->session->setFlash('success', 'Вы успешно изменили данные');
         }
-        return $this->save();
+        return $this->save(false);
     }
 
-    public function getAvatarUrl(){
-
-        if($this->avatar) {
-            return '/avatars/'.$this->avatar;
+    public function getAvatarUrl()
+    {
+        if ($this->avatar) {
+            return '/avatars/' . $this->avatar;
         }
         return null;
     }
