@@ -28,40 +28,27 @@ AppAsset::register($this);
 <div class="wrap">
 
     <?php
-    NavBar::begin(['brandLabel' => 'Lea', 'options' => [
-        'class' => ['navbar-dark bg-info', 'navbar-expand-md']
+    NavBar::begin(['brandLabel' => 'Lea - admin panel', 'options' => [
+        'class' => ['navbar-dark bg-dark', 'navbar-expand-md']
     ]]);
     $items = [
         [
             'label' => 'Главная',
-            'url' => ['/site/index'],
+            'url' => ['/admin/'],
+        ],
+        [
+            'label' => 'Пометить как преподавателя',
+            'url' => ['/admin/'],
+        ],
+
+
+
+
+        [
+            'label' => 'Вернуться на сайт',
+            'url' => ['/site/'],
         ],
     ];
-    if (Yii::$app->user->isGuest) {
-        $items[] = [
-            'label' => 'Вход',
-            'url' => ['/auth/signin'],
-        ];
-        $items[] = [
-            'label' => 'Регистрация',
-            'url' => ['/auth/signup'],
-        ];
-    }else {
-        $items[] = [
-            'label' => 'Мой профиль',
-            'url' => ['/site/profile'],
-        ];
-        $items[] = [
-            'label' => 'Выход',
-            'url' => ['/auth/logout'],
-        ];
-        if(Yii::$app->user->identity->role == 'admin') {
-            $items[] = [
-                'label' => 'Админ-панель',
-                'url' => ['/admin/'],
-            ];
-        }
-    }
     echo Nav::widget([
         'items' => $items,
         'options' => ['class' => 'navbar-nav ml-auto'],
