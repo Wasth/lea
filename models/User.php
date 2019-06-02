@@ -4,6 +4,7 @@ namespace app\models;
 
 use PHPUnit\Util\PHP\AbstractPhpProcess;
 use Yii;
+use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use yii\web\UploadedFile;
 
@@ -19,7 +20,7 @@ use yii\web\UploadedFile;
  * @property string $role
  * @property string $avatarUrl
  */
-class User extends \yii\db\ActiveRecord implements IdentityInterface
+class User extends ActiveRecord implements IdentityInterface
 {
     public $newpassword;
     public $avatarfile;
@@ -39,9 +40,12 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['birthday'], 'safe'],
-            [['login', 'avatar', 'password', 'first_last_name', 'role'], 'string', 'max' => 255],
+            [['avatar', 'first_last_name', 'role'], 'string', 'max' => 255],
             [['login'], 'unique', 'on' => 'default'],
             [['login'], 'unique', 'on' => 'signup'],
+            [['login'], 'string', 'min' => 3],
+            ['login', 'match', 'pattern' => '/[a-zA-Z0-9_]{3,}/m' ,'message' => 'Логин должеть быть от 3 символов и содержать только латиницу, нижнее подчеркивание и цифры'],
+            ['password', 'string', 'min' => 6],
             ['role', 'default', 'value' => 'user'],
             [['login', 'password', 'first_last_name'], 'trim'],
             [['login', 'password', 'first_last_name'], 'required', 'on' => 'signup'],
