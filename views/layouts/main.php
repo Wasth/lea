@@ -47,6 +47,18 @@ AppAsset::register($this);
             'url' => ['/auth/signup'],
         ];
     }else {
+        if(Yii::$app->user->identity->role == 'admin') {
+            $items[] = [
+                'label' => 'Админ-панель',
+                'url' => ['/admin/'],
+            ];
+        }
+        if(Yii::$app->user->identity->role == 'admin' || Yii::$app->user->identity->role == 'teacher') {
+            $items[] = [
+                'label' => 'Управление тестами',
+                'url' => ['/admin/'],
+            ];
+        }
         $items[] = [
             'label' => 'Мой профиль',
             'url' => ['/site/profile'],
@@ -55,19 +67,13 @@ AppAsset::register($this);
             'label' => 'Выход',
             'url' => ['/auth/logout'],
         ];
-        if(Yii::$app->user->identity->role == 'admin') {
-            $items[] = [
-                'label' => 'Админ-панель',
-                'url' => ['/admin/'],
-            ];
-        }
     }
     echo Nav::widget([
         'items' => $items,
         'options' => ['class' => 'navbar-nav ml-auto'],
     ]);
     NavBar::end(); ?>
-    <div class="container">
+    <div class="">
         <?= $content ?>
     </div>
 </div>

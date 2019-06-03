@@ -134,3 +134,15 @@ a.desc:after {
 .profile-edit input[type=file] {
     height: 38px;
 }
+.landing {
+    background-image: url('/img/bg45.jpg');
+    display: flex;
+    flex-direction: column;
+    margin-top: -56px;
+    height: calc(100vh);
+    justify-content: center;
+    align-items: center;
+}
+.landing .container {
+    /*height: 100%;*/
+}
