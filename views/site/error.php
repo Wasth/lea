@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 $this->title = $name;
 ?>
-<div class="site-error">
+<div class="site-error container mt-3">
 
     <h1><?= \Yii::t('app',Html::encode($this->title)) ?></h1>
 

@@ -146,3 +146,7 @@ a.desc:after {
 .landing .container {
     /*height: 100%;*/
 }
+.profile-role {
+    font-size: 1.2rem;
+    color: gray;
+}

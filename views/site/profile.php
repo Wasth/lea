@@ -24,7 +24,7 @@ $this->title = 'Lea - Мой профиль';
                 <?php endif; ?>
             </div>
             <div class="col-sx-12 col-md-9">
-                <h2><?= $model->first_last_name ?></h2>
+                <h2><span class="badge badge-info"><?= $model->role ?></span> <?= $model->first_last_name ?></h2>
                 <h4><?= $model->login ?></h4>
                 <h4>Дата рождения - <?= Yii::$app->formatter->asDate($model->birthday) ?></h4>
                 <button class="btn btn-primary mt-2" id="show-edit">Редактировать профиль</button>

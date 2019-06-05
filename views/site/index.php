@@ -23,7 +23,7 @@ use yii\helpers\Url;
 
     <div class="container text-white">
         <?php if( Yii::$app->session->hasFlash('success') ): ?>
-            <div class="alert alert-white alert-dismissible" role="alert">
+            <div class="alert alert-white alert-dismissible border-secondary" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <?php echo Yii::$app->session->getFlash('success'); ?>
             </div>
