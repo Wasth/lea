@@ -29,6 +29,7 @@ class DefaultController extends Controller
             $user = User::findOne($id);
             $user->role = $roles[$user->role];
             $user->save();
+            $this->redirect(['/admin/default/set-teacher']);
         }
 
         $users = User::find()->where(['<>', 'role', 'admin'])->all();
