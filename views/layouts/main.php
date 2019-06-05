@@ -46,17 +46,26 @@ AppAsset::register($this);
             'label' => 'Регистрация',
             'url' => ['/auth/signup'],
         ];
-    }else {
-        if(Yii::$app->user->identity->role == 'admin') {
+    } else {
+        if (Yii::$app->user->identity->role == 'admin') {
             $items[] = [
                 'label' => 'Админ-панель',
                 'url' => ['/admin/'],
             ];
         }
-        if(Yii::$app->user->identity->role == 'admin' || Yii::$app->user->identity->role == 'teacher') {
+        if (Yii::$app->user->identity->role == 'admin' || Yii::$app->user->identity->role == 'teacher') {
             $items[] = [
                 'label' => 'Управление тестами',
-                'url' => ['/admin/'],
+                'items' => [
+                    [
+                        'label' => 'Созданные мной',
+                        'url' => ['/']
+                    ],
+                    [
+                        'label' => ' Приклепленные ко мне',
+                        'url' => ['/']
+                    ],
+                ]
             ];
         }
         $items[] = [

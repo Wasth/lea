@@ -38,7 +38,7 @@ AppAsset::register($this);
         ],
         [
             'label' => 'Пометить как преподавателя',
-            'url' => ['/admin/'],
+            'url' => ['/admin/default/set-teacher'],
         ],
 
 

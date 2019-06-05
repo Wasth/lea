@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\User;
 use yii\web\Controller;
 
 /**
@@ -18,5 +19,22 @@ class DefaultController extends Controller
         return $this->render('index');
     }
 
+    public function actionSetTeacher($id = null){
 
+        if($id) {
+            $roles = [
+                'teacher' => 'user',
+                'user' => 'teacher',
+            ];
+            $user = User::findOne($id);
+            $user->role = $roles[$user->role];
+            $user->save();
+        }
+
+        $users = User::find()->where(['<>', 'role', 'admin'])->all();
+
+        return $this->render('set-teacher', [
+            'users' => $users,
+        ]);
+    }
 }
