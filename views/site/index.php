@@ -9,6 +9,15 @@ use yii\helpers\Url;
         background-color: transparent !important;
         /*border-bottom: 1px solid rgba(255, 255, 255, 0.34);*/
     }
+    .landing {
+        background-image: url('/img/bg45.jpg');
+        display: flex;
+        flex-direction: column;
+        margin-top: -56px;
+        height: calc(100vh);
+        justify-content: center;
+        align-items: center;
+    }
     .footer {
         display: none;
     }
@@ -17,6 +26,15 @@ use yii\helpers\Url;
     }
     hr {
         border-top: 1px solid rgba(255, 255, 255, 0.34);
+    }
+    @media (max-width: 767px) {
+        .landing {
+            height: 100%;
+            margin-top: 0;
+        }
+        #w0 {
+            background-color: rgba(0,0,0,0.5) !important;
+        }
     }
 </style>
 <div class="landing">
