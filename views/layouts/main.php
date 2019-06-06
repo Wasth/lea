@@ -29,7 +29,7 @@ AppAsset::register($this);
 
     <?php
     NavBar::begin(['brandLabel' => 'Lea', 'options' => [
-        'class' => ['navbar-dark bg-info', 'navbar-expand-md']
+        'class' => ['navbar-dark bg-purple', 'navbar-expand-md']
     ]]);
     $items = [
         [
@@ -58,12 +58,16 @@ AppAsset::register($this);
                 'label' => 'Управление тестами',
                 'items' => [
                     [
+                        'label' => 'Создать',
+                        'url' => ['/test/create']
+                    ],
+                    [
                         'label' => 'Созданные мной',
-                        'url' => ['/']
+                        'url' => ['/test/created-by-me']
                     ],
                     [
                         'label' => ' Приклепленные ко мне',
-                        'url' => ['/']
+                        'url' => ['/test/attached-to-me']
                     ],
                 ]
             ];
