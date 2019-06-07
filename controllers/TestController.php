@@ -77,7 +77,12 @@ class TestController extends Controller
     public function actionUpdate($id)
     {
         $model = Test::findOne($id);
-        $teachers = User::find()->where(['role' => 'teacher'])->all();
+        $test_access = TestAccess::find()->where(['test_id' => $id])->all();
+        $ids = [];
+        foreach($test_access as $item){
+            $ids[] = $item->user_id;
+        }
+        $teachers = User::find()->where(['role' => 'teacher'])->andWhere(['<>', 'id', Yii::$app->user->id])->andWhere(['not in', 'id', $ids])->all();
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
                 $model->save();
