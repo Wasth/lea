@@ -79,7 +79,7 @@ class TestController extends Controller
         $model = Test::findOne($id);
         $test_access = TestAccess::find()->where(['test_id' => $id])->all();
         $ids = [];
-        foreach($test_access as $item){
+        foreach ($test_access as $item) {
             $ids[] = $item->user_id;
         }
         $teachers = User::find()->where(['role' => 'teacher'])->andWhere(['<>', 'id', Yii::$app->user->id])->andWhere(['not in', 'id', $ids])->all();
@@ -95,17 +95,22 @@ class TestController extends Controller
         ]);
     }
 
-    public function actionAttach($id, $user) {
+    public function actionAttach($id, $user)
+    {
         $test = Test::findOne($id);
         $test->attachTeacher($user);
         return $this->redirect(['/test/update', 'id' => $test->id]);
     }
 
-    public function actionAddQuestion($id){
-
+    public function actionAddQuestion($id)
+    {
+        return $this->render('add-questions', [
+            'test_id' => $id
+        ]);
     }
 
-    public function actionDelete($id){
+    public function actionDelete($id)
+    {
         $test = Test::find()->where(['id' => $id])->one();
         $test->delete();
         return $this->redirect('/test/created-by-me');
