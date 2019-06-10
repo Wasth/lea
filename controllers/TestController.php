@@ -99,7 +99,7 @@ class TestController extends Controller
     public function actionAttach($id, $user) {
         $test = Test::findOne($id);
         $test->attachTeacher($user);
-        return $this->redirect(['/test/update', 'id' => $user]);
+        return $this->redirect(['/test/update', 'id' => $test->id]);
     }
 
     public function actionDelete($id){
