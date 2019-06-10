@@ -46,6 +46,6 @@ use yii\helpers\Url;
     </div>
     <?php endforeach; ?>
     <?php else: ?>
-        <h1 class="text-secondary">Вы еще не создавали тесты</h1>
+        <h1 class="text-secondary mt-3">Вы еще не создавали тесты</h1>
     <?php endif; ?>
 </div>

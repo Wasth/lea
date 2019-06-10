@@ -28,6 +28,6 @@ use yii\helpers\Url;
         </div>
     <?php endforeach; ?>
     <?php else: ?>
-        <h1 class="text-secondary">Нету прикрепленных к вам тестов</h1>
+        <h1 class="text-secondary mt-3">Нету прикрепленных к вам тестов</h1>
     <?php endif; ?>
 </div>

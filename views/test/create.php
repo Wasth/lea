@@ -6,9 +6,11 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Test */
 /* @var $form ActiveForm */
+
+$this->title = 'Создать тест';
 ?>
 <div class="test-create container mt-3">
-
+    <h2>Создать тест</h2>
     <?php $form = ActiveForm::begin(); ?>
 
         <?= $form->field($model, 'name') ?>
