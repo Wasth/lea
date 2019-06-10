@@ -14,10 +14,10 @@ use yii\helpers\Url;
                     Вопросов: <?= count($test_a->test->questions) ?>
                 </div>
                 <div class="time-limit">
-                    Время на прохождение: <?= $test_a->test->time_limit ?> сек.
+                    Время на прохождение: <?= $test_a->test->time_limit ? $test_a->test->time_limit : 'неогр. кол-во' ?> сек.
                 </div>
                 <div class="attempt-linit">
-                    Попыток: <?= $test_a->test->attempt_limit ?>
+                    Попыток: <?= $test_a->test->attempt_limit ? $test_a->test->attempt_limit : 'неогр.' ?>
                 </div>
                 <div class="actions">
                     <a href="<?= Url::to(['/test/update', 'id' => $test_a->test->id]) ?>">

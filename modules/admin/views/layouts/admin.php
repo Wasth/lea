@@ -20,6 +20,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <?php $this->head() ?>
 </head>
 <body>
@@ -40,10 +41,10 @@ AppAsset::register($this);
             'label' => 'Пометить как преподавателя',
             'url' => ['/admin/default/set-teacher'],
         ],
-
-
-
-
+        [
+            'label' => 'Управление теорией',
+            'url' => ['/admin/theory/'],
+        ],
         [
             'label' => 'Вернуться на сайт',
             'url' => ['/site/'],

@@ -86,7 +86,6 @@ class TestController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
                 $model->save();
-                return $this->redirect('/test/created-by-me');
             }
         }
 
@@ -100,6 +99,10 @@ class TestController extends Controller
         $test = Test::findOne($id);
         $test->attachTeacher($user);
         return $this->redirect(['/test/update', 'id' => $test->id]);
+    }
+
+    public function actionAddQuestion($id){
+
     }
 
     public function actionDelete($id){

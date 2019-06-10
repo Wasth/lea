@@ -10,13 +10,12 @@ use yii\helpers\Url;
 $this->title = 'Изменить тест'
 ?>
 <div class="test-create container mt-3">
-
+    <h2>Изменить тест</h2>
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'name') ?>
     <?= $form->field($model, 'time_limit') ?>
     <?= $form->field($model, 'attempt_limit') ?>
-    <?= $form->field($model, 'user_id')->hiddenInput(['value' => Yii::$app->user->id])->label(false) ?>
 
 
     <div class="form-group">
@@ -24,21 +23,33 @@ $this->title = 'Изменить тест'
     </div>
     <?php ActiveForm::end(); ?>
 
-    <h2>Прикрепить учителя к данному тесту</h2>
-
-    <?php foreach($teachers as $teacher): ?>
-        <div class="card mt-3 card-body test-card">
-            <div class="d-flex w-100 justify-content-between align-items-center">
-                <div class="name">
-                    <?= $teacher->first_last_name ?>
+    <?php if ($model->user_id == Yii::$app->user->id): ?>
+        <h2>Прикрепить учителя к данному тесту</h2>
+        <?php if($teachers): ?>
+            <?php foreach ($teachers as $teacher): ?>
+                <div class="card mt-3 card-body test-card">
+                    <div class="d-flex w-100 justify-content-between align-items-center">
+                        <div class="name">
+                            <?= $teacher->first_last_name ?>
+                        </div>
+                        <div class="actions">
+                            <a href="<?= Url::to(['/test/attach', 'id' => $model->id, 'user' => $teacher->id]) ?>">
+                                <button class="btn btn-primary">Прикрепить</button>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="actions">
-                    <a href="<?= Url::to(['/test/attach', 'id' => $model->id, 'user' => $teacher->id]) ?>">
-                        <button class="btn btn-primary">Прикрепить</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    <?php endforeach; ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <h3 class="text-secondary">Нету доступных учителей</h3>
+        <?php endif; ?>
+    <?php endif; ?>
 
+    <?php if($questions): ?>
+        <?php foreach($questions as $question): ?>
+            <h4><?= $question->text ?></h4>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <h3 class="text-secondary">Вопросов еще нет</h3>
+    <?php endif; ?>
 </div><!-- test-create -->
