@@ -48,7 +48,10 @@ $this->title = 'Изменить тест'
     <h2>Вопросы <a href="<?= Url::to(['test/add-question', 'id' => $model->id]) ?>" role="button" class="btn btn-success">Добавить</a></h2>
     <?php if($questions): ?>
         <?php foreach($questions as $question): ?>
-            <h4><?= $question->text ?></h4>
+            <div class="card card-body test-card mt-2 mb-2">
+                <h5><?= $question->text ?></h5>
+                <div><a href="<?= Url::to(['test/delete-question', 'id' => $question->id]) ?>" role="button" class="text-danger">Удалить</a></div>
+            </div>
         <?php endforeach; ?>
     <?php else: ?>
         <h3 class="text-secondary">Вопросов еще нет</h3>

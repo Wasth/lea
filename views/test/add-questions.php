@@ -43,8 +43,8 @@ use yii\helpers\Url; ?>
         </div>
     </div>
     <button @click="tryToAdd" class="btn btn-success mt-3">Добавить</button>
-    <form id="#form" action="<?= Url::to(['/test/add-question', 'id' => $id]) ?>" method="post" class="d-none">
-        <?= Html::csrfMetaTags() ?>
+    <form id="form" action="<?= Url::to(['/test/add-question', 'id' => $test_id]) ?>" method="post" class="d-none">
+        <input type="hidden" name="<?= Yii::$app->request->csrfParam ?>" value="<?= Yii::$app->request->csrfToken ?>">
         <input type="text" name="answer-type" v-model="answerType">
         <input type="text" name="answer-text" v-model="text">
         <input type="text" name="answer-right" v-model="answerRight">

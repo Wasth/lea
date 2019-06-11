@@ -9,6 +9,8 @@
 namespace app\controllers;
 
 
+use app\models\Answer;
+use app\models\Question;
 use app\models\Test;
 use app\models\TestAccess;
 use app\models\User;
@@ -92,6 +94,7 @@ class TestController extends Controller
         return $this->render('update', [
             'model' => $model,
             'teachers' => $teachers,
+            'questions' => $model->questions
         ]);
     }
 
@@ -104,11 +107,24 @@ class TestController extends Controller
 
     public function actionAddQuestion($id)
     {
-        if(Yii::$app->request->isPost){
-            var_dump(Yii::$app->request->post());die;
+        if (Yii::$app->request->isPost) {
+            $post = Yii::$app->request->post();
+            $question = new Question();
+            $question->test_id = $id;
+            $question->theory_id = $post['question-theory'];
+            $question->text = $post['question-text'];
+            $question->question_score = $post['question-score'];
+            $question->save(false);
+            $answer = new Answer();
+            $answer->question_id = $question->id;
+            $answer->type = $post['answer-type'];
+            $answer->text = $post['answer-text'];
+            $answer->right_answer = $post['answer-right'];
+            $answer->save(false);
+            return $this->redirect(['/test/update', 'id' => $id]);
         }
         return $this->render('add-questions', [
-            'test_id' => $id
+            'test_id' => $id,
         ]);
     }
 
@@ -117,5 +133,15 @@ class TestController extends Controller
         $test = Test::find()->where(['id' => $id])->one();
         $test->delete();
         return $this->redirect('/test/created-by-me');
+    }
+
+    public function actionDeleteQuestion($id)
+    {
+        $question = Question::find()->where(['id' => $id])->one();
+        $test_id = $question->test_id;
+        $answer = Answer::find()->where(['question_id' => $question->id])->one();
+        $answer->delete();
+        $question->delete();
+        return $this->redirect(['/test/update', 'id' => $test_id]);
     }
 }
