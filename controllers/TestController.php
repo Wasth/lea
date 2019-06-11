@@ -104,6 +104,9 @@ class TestController extends Controller
 
     public function actionAddQuestion($id)
     {
+        if(Yii::$app->request->isPost){
+            var_dump(Yii::$app->request->post());die;
+        }
         return $this->render('add-questions', [
             'test_id' => $id
         ]);
