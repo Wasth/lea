@@ -57,7 +57,7 @@ use yii\helpers\Url;
                     <a class="btn btn-light btn-lg mt-2" href="<?= Url::to(['auth/signup']) ?>" role="button">Создать аккаунт</a>
                     <a class="btn btn-light btn-lg mt-2" href="<?= Url::to(['auth/signin']) ?>" role="button">Войти в аккаунт</a>
                 <?php else: ?>
-                    <a class="btn btn-light btn-lg" href="" role="button">Пройти тест</a>
+                    <a class="btn btn-light btn-lg" href="<?= Url::to(['site/list']) ?>" role="button">Пройти тест</a>
                 <?php endif; ?>
             </p>
         </div>

@@ -88,4 +88,18 @@ class Test extends \yii\db\ActiveRecord/**/
             }
         }
     }
+    /**
+     * @return array
+     */
+    public function getTheoryTopics(){
+        $topics = [];
+
+        foreach($this->questions as $question){
+            if(!in_array($question->theory->title, $topics)) {
+                $topics[] = $question->theory->title;
+            }
+        }
+
+        return $topics;
+    }
 }

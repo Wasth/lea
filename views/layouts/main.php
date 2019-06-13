@@ -72,6 +72,19 @@ AppAsset::register($this);
                 ]
             ];
         }
+
+        if (Yii::$app->user->identity->role == 'admin' || Yii::$app->user->identity->role == 'user') {
+            $items[] = [
+                'label' => 'Тесты',
+                'url' => ['/site/list']
+            ];
+
+            $items[] = [
+                'label' => 'Результаты',
+                'url' => ['/site/results']
+            ];
+        }
+
         $items[] = [
             'label' => 'Мой профиль',
             'url' => ['/site/profile'],

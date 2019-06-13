@@ -144,4 +144,5 @@ class TestController extends Controller
         $question->delete();
         return $this->redirect(['/test/update', 'id' => $test_id]);
     }
+
 }

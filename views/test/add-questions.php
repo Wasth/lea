@@ -86,7 +86,7 @@ use yii\helpers\Url; ?>
                 }else if(this.answerType == '1') {
                     let ready = '';
 
-                    ready = this.types.type1.other1+this.types.type1.other2+this.types.type1.other3;
+                    ready = this.types.type1.other1+';'+this.types.type1.other2+';'+this.types.type1.other3;
 
                     return ready;
                 }
