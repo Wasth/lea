@@ -16,18 +16,18 @@ class m190612_225702_create_question_result_table extends Migration
             'id' => $this->primaryKey(),
             'test_result_id' => $this->integer(),
             'question_id' => $this->integer(),
-            'bttn_press' => $this->timestamp(),
+            'bttn_press' => $this->string(),
             'answer_right' => $this->string(),
         ]);
 
 
         $this->addForeignKey('fk-question_result-test_result_id-test_result-id',
-            'question_result','test_result_id',
-            'test_result','id');
+            'question_result', 'test_result_id',
+            'test_result', 'id');
 
         $this->addForeignKey('fk-question_result-question_id-question-id',
-            'question_result','question_id',
-            'question','id');
+            'question_result', 'question_id',
+            'question', 'id');
     }
 
     /**
