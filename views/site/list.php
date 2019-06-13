@@ -14,7 +14,7 @@ use yii\helpers\Url; ?>
     <div class="card card-body test-card mt-2 mb-2 d-flex justify-content-between flex-row align-items-center">
         <div>
             <h5><?= $test->name ?></h5>
-            <p class="text-secondary mb-0"><?= $test->user->first_last_name ?>, вопросов - <?= count($test->questions) ?></p>
+            <p class="text-secondary mb-0"><?= $test->user->first_last_name ?>, вопросов - <?= count($test->questions) ?>, осталось попыток - <?= $test->getAttemptsLeft() ?></p>
         </div>
         <div>
             <p class="text-right"><a href="<?= Url::to(['site/pass', 'id' => $test->id]) ?>" role="button" class="btn btn-success">Пройти тест</a></p>

@@ -45,7 +45,7 @@ $this->title = 'Изменить тест'
         <?php endif; ?>
     <?php endif; ?>
 
-    <h2>Вопросы <a href="<?= Url::to(['test/add-question', 'id' => $model->id]) ?>" role="button" class="btn btn-success">Добавить</a></h2>
+    <h2 class="my-4">Вопросы <a href="<?= Url::to(['test/add-question', 'id' => $model->id]) ?>" role="button" class="btn btn-success">Добавить</a></h2>
     <?php if($questions): ?>
         <?php foreach($questions as $question): ?>
             <div class="card card-body test-card mt-2 mb-2">
