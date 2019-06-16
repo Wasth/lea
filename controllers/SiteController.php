@@ -53,6 +53,11 @@ class SiteController extends Controller
 
     public function actionPass($id) {
         $test = Test::findOne($id);
+
+        $test_results = TestResult::find()->where(['test_id' => $id])->where(['user_id' => Yii::$app->user->id])->all();
+        if(count($test_results) >= $test->attempt_limit){
+            $this->redirect(['/site/attempt-limit']);
+        }
         $data = $test->toArray();
         $data['questions'] = [];
         foreach(Question::find()->where(['test_id' => $test->id])->all() as $question){
@@ -89,5 +94,26 @@ class SiteController extends Controller
             }
         }
 
+        $this->redirect(['/site/test-result', 'id' => $test_result->id]);
+    }
+
+    public function actionTestResult($id){
+        $test_result = TestResult::findOne($id);
+//        var_dump($test_result->getResultData());die;
+        return $this->render('test-result', [
+            'data' => $test_result->getResultData(),
+        ]);
+    }
+
+    public function actionResults(){
+        $test_results = TestResult::find()->where(['user_id' => Yii::$app->user->id])->all();
+
+        return $this->render('results', [
+            'data' => $test_results,
+        ]);
+    }
+
+    public function actionAttemptLimit(){
+        return $this->render('attempt-limit');
     }
 }

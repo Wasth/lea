@@ -77,4 +77,25 @@ class TestResult extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+
+    public function getResultData(){
+        $test = Test::findOne($this->test_id);
+        $max_score = $test->getMaxScore();
+
+        $score = 0;
+        foreach ($this->questionResults as $questionResult) {
+            if($questionResult->question->answers[0]->right_answer == $questionResult->answer_right) {
+                $score+=$questionResult->question->question_score;
+            }
+        }
+
+        $pass_time = floor(($this->date_time_finish - $this->date_time_start) / 1000);
+
+        return [
+            'score' => $score,
+            'max_score' => $max_score,
+            'pass_time' => $pass_time,
+            'test_name' => $test->name,
+        ];
+    }
 }

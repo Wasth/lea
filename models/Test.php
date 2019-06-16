@@ -102,4 +102,22 @@ class Test extends \yii\db\ActiveRecord/**/
 
         return $topics;
     }
+
+    public function getMaxScore(){
+        $score = 0;
+
+        foreach($this->questions as $question){
+            $score+=$question->question_score;
+        }
+
+        return $score;
+    }
+
+    public function getAttemptsLeft(){
+        $test_results = TestResult::find()->where(['test_id' => $this->id])->andWhere(['user_id' => Yii::$app->user->id])->all();
+        if($this->attempt_limit - count($test_results) < 0){
+            return 0;
+        }
+        return $this->attempt_limit - count($test_results);
+    }
 }
