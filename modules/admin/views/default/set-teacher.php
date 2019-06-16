@@ -16,7 +16,7 @@ $this->title = 'Lea - отметить как учителя'
             <td><?= $user->id ?></td>
             <td><?= $user->first_last_name ?></td>
             <td><?= $user->role ?></td>
-            <td><a href="<?= \yii\helpers\Url::to(['id' => $user->id]) ?>"><?= $user->role == 'teacher' ? 'Пометить как ученика' : 'Пометить как учителя' ?></a></td>
+            <td><a href="<?= \yii\helpers\Url::to(['/admin/default/set-teacher','id' => $user->id]) ?>"><?= $user->role == 'teacher' ? 'Пометить как ученика' : 'Пометить как учителя' ?></a></td>
         </tr>
     <?php endforeach; ?>
 </table>

@@ -131,6 +131,10 @@ class TestController extends Controller
     public function actionDelete($id)
     {
         $test = Test::find()->where(['id' => $id])->one();
+        foreach($test->questions as $question){
+            $question->answers[0]->delete();
+            $question->delete();
+        }
         $test->delete();
         return $this->redirect('/test/created-by-me');
     }
